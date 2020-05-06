@@ -22,13 +22,18 @@ public class testmain {
 
 		Scanner userInput = new Scanner(System.in);
 
-		// get starting year of user 
-		System.out.println("Enter starting year");
+		// get starting year of user
+		System.out.println("Enter all as number");
+		System.out.println("year");
 		int userStartingYear = userInput.nextInt();
 		
 		// get starting month of user
-		System.out.println("Enter starting month(as number)");
+		System.out.println("month");
 		int userStartingMonth = userInput.nextInt();
+
+		// get starting day of user
+		System.out.println("day");
+		int userStartingDay = userInput.nextInt();		
 		
 		// get apprenticeship duration in weeks
 		System.out.println("Enter duration of apprenticeship in weeks");
@@ -48,7 +53,7 @@ public class testmain {
 		// determine the first work day
 		// account for first day on weekend
 		LocalDate firstWorkDate;
-		for(firstWorkDate = LocalDate.of(userStartingYear, userStartingMonth, 1);(firstWorkDate.getDayOfWeek().getValue() > 5);firstWorkDate = firstWorkDate.plusDays(1)) {
+		for(firstWorkDate = LocalDate.of(userStartingYear, userStartingMonth, userStartingDay);(firstWorkDate.getDayOfWeek().getValue() > 5);firstWorkDate = firstWorkDate.plusDays(1)) {
 			System.out.println(firstWorkDate.toString());
 		};
 		
@@ -129,7 +134,7 @@ public class testmain {
 			s.append(tue);
 			s.append("_");
 			s.append(wed);
-			s.append("_");
+			s.append("_"); 
 			s.append(thu);
 			s.append("_");
 			s.append(fri);
@@ -152,15 +157,6 @@ public class testmain {
 		
 		return 	d.format(asshead);
 		
-	}
-	
-	private LocalDate setDateToMonday(LocalDate d) {
-		
-		if (d.getDayOfWeek().getValue() != 1) {
-			d = d.minusDays((d.getDayOfWeek().getValue()) -1 );
-		}		
-		return d;
-
 	}
 	
 	
